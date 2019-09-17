@@ -1,0 +1,74 @@
+h1, p {
+    color: black;
+    background-color: white;
+}
+
+body {
+    background-color: #CC0633;
+}
+h2 {
+    color: #CC0633;
+}
+div {
+    position: fixed;
+    top: 0px;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    height: 90%;
+    padding: 0px;
+    z-index: 999;
+    border-top: 20px solid #333333;
+    border-bottom: 40px solid #333333;
+    background-color: white;
+    box-shadow: 8px 8px 8px darkred;
+}
+div2 {
+    position: fixed;
+    background-color: #e6f3ff;
+    width: 60%;
+}
+tr:first-child {
+    background-color: lightgrey;
+}
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+
+th, td {
+    padding: 5px;
+}
+p {
+    background-color: #e6f3ff
+}
+table, td, th ,div2, h2,p, h1 {
+        margin-left: 25px
+}
+
+weight {
+    width: 50px;
+}
+
+grade {
+    width: 50px;
+}
+input{
+    width: 75px;
+}
+meanbutton {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+button {
+    background-color: #CC0633;
+    border: none;
+    color: white;
+    padding: 5px;
+}
