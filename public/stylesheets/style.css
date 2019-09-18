@@ -4,32 +4,34 @@ h1, p {
 }
 
 body {
-    background-color: #CC0633;
+    background-color: #A3062A;
 }
 h2 {
-    color: #CC0633;
+    color: #A3062A;
+    font-size: 20px;
+    font-weight: bold;
 }
 div {
     position: fixed;
     top: 0px;
-    left: 10%;
-    right: 10%;
-    width: 80%;
-    height: 90%;
-    padding: 0px;
+    right: 3%;
+    left: 3%;
+    width: 94%;
+    height: 670px;//82% padding: 0px;
     z-index: 999;
     border-top: 20px solid #333333;
     border-bottom: 40px solid #333333;
     background-color: white;
-    box-shadow: 8px 8px 8px darkred;
+    box-shadow: 5px 5px 5px #890624;
 }
 div2 {
     position: fixed;
     background-color: #e6f3ff;
-    width: 60%;
+    width: 55%;
+    height: 62%;
 }
 tr:first-child {
-    background-color: lightgrey;
+    background-color: #DCDCDC;
 }
 table, td, th {
     border: 1px solid #ddd;
@@ -38,7 +40,11 @@ table, td, th {
 
 table {
     border-collapse: collapse;
-    width: 90%;
+    max-width: 700px;
+    width: 92%;
+    max-height: 300px;
+    height: 100%;
+    white-space: nowrap
 }
 
 th, td {
@@ -52,14 +58,11 @@ table, td, th ,div2, h2,p, h1 {
 }
 
 weight {
-    width: 50px;
+    width: 60%;
 }
 
-grade {
-    width: 50px;
-}
 input{
-    width: 75px;
+    width: 35%;
 }
 meanbutton {
     position: absolute;
@@ -67,8 +70,12 @@ meanbutton {
     bottom: 15px;
 }
 button {
-    background-color: #CC0633;
+    background-color: #A3062A;
     border: none;
     color: white;
     padding: 5px;
+}
+html {
+    overflow-y: scroll ;
+    overflow-x: scroll;
 }
