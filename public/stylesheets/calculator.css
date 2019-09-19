@@ -6,11 +6,13 @@ h1, p {
 body {
     background-color: #A3062A;
 }
+
 h2 {
     color: #A3062A;
     font-size: 20px;
     font-weight: bold;
 }
+
 div {
     position: fixed;
     top: 0px;
@@ -25,15 +27,18 @@ div {
     background-color: white;
     box-shadow: 5px 5px 5px 5px #890624;
 }
+
 div2 {
     position: fixed;
     background-color: #EBF3F2;
     width: 800px; /* 55% */
     height: 520px; /* 62% */
 }
+
 tr:first-child {
     background-color: #DCDCDC;
 }
+
 table, td, th {
     border: 1px solid #ddd;
     text-align: left;
@@ -44,16 +49,18 @@ table {
     width: 750px;
     /*width: 92%;*/
     max-height: 300px;
-   /* height: 100%;*/
+    /* height: 100%;*/
     /*white-space: nowrap*/
 }
 
 th, td {
     padding: 5px;
 }
+
 p {
     background-color: #EBF3F2;
 }
+
 table, td, th, div2, h2, p, h1 {
     margin-left: 25px;
 }
@@ -68,11 +75,13 @@ meanbutton {
     right: 10px;
     bottom: 15px;
 }
+
 wbutton {
     position: absolute;
     right: 120px;
     bottom: 15px;
 }
+
 button {
     background-color: #A3062A;
     border: none;
@@ -80,13 +89,14 @@ button {
     width: 90px;
     height: 25px;
 }
+
 html {
     height: 100%;
-
 }
-resform{
+
+resform {
     position: absolute;
-    bottom: 9px;
+    bottom: 13px;
     left: 22px;
     color: black;
     font-size: 18px;
