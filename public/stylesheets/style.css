@@ -14,21 +14,22 @@ h2 {
 div {
     position: fixed;
     top: 0px;
-    right: 3%;
-    left: 3%;
-    width: 94%;
-    height: 670px;//82% padding: 0px;
-    z-index: 999;
+    right: 40px; /*3%*/
+    left: 50px; /*3%*/
+    width: 1260px; /* 94% */
+    height: 670px; /* 82% */
+    padding: 0px;
+    /*z-index: 999;*/
     border-top: 20px solid #333333;
     border-bottom: 40px solid #333333;
     background-color: white;
-    box-shadow: 5px 5px 5px #890624;
+    box-shadow: 5px 5px 5px 5px #890624;
 }
 div2 {
     position: fixed;
-    background-color: #e6f3ff;
-    width: 55%;
-    height: 62%;
+    background-color: #EBF3F2;
+    width: 800px; /* 55% */
+    height: 520px; /* 62% */
 }
 tr:first-child {
     background-color: #DCDCDC;
@@ -40,42 +41,53 @@ table, td, th {
 
 table {
     border-collapse: collapse;
-    max-width: 700px;
-    width: 92%;
+    width: 750px;
+    /*width: 92%;*/
     max-height: 300px;
-    height: 100%;
-    white-space: nowrap
+   /* height: 100%;*/
+    /*white-space: nowrap*/
 }
 
 th, td {
     padding: 5px;
 }
 p {
-    background-color: #e6f3ff
+    background-color: #EBF3F2;
 }
-table, td, th ,div2, h2,p, h1 {
-        margin-left: 25px
-}
-
-weight {
-    width: 60%;
+table, td, th, div2, h2, p, h1 {
+    margin-left: 25px;
 }
 
-input{
-    width: 35%;
+input {
+    width: 35%; /*30%*/
+    padding-left: 1px;
 }
+
 meanbutton {
     position: absolute;
     right: 10px;
+    bottom: 15px;
+}
+wbutton {
+    position: absolute;
+    right: 120px;
     bottom: 15px;
 }
 button {
     background-color: #A3062A;
     border: none;
     color: white;
-    padding: 5px;
+    width: 90px;
+    height: 25px;
 }
 html {
-    overflow-y: scroll ;
-    overflow-x: scroll;
+    height: 100%;
+
+}
+resform{
+    position: absolute;
+    bottom: 9px;
+    left: 22px;
+    color: black;
+    font-size: 18px;
 }
