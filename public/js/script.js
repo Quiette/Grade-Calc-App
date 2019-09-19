@@ -1,29 +1,37 @@
-/*var b = document.getElementByID("B1");
-b.onclick = function () {
-    window.alert("HELLLLPPPPPP!!!!");
-}*/
 
-/*document.getElementById("B1").addEventListener('click', function(){
-    console.log("you've clicked me!");
-});*/
+//VARIABLES USED IN MANY FUNCTIONS
+
+var d1box = document.getElementById("d1"); 
+var d2box = document.getElementById("d2");
+var d3box = document.getElementById("d3");
+var d4box = document.getElementById("d4");
+var n1box = document.getElementById("n1");
+var n2box = document.getElementById("n2");
+var n3box = document.getElementById("n3");
+var n4box = document.getElementById("n4");
+var calcmean = document.getElementById("meanb");
+var calcweightmean = document.getElementById("wb");
+
+/////////////////////////////////////////////////
+
+//SUB-ROUTINES
 
 function validateform(x) {
     if (x == null || x == "") {
         return false;
-        // redirect to where you want
     }
 }
 
 function checkgrades() {
     var full = true; //sees if all parts filled out
-    var d1 = document.getElementById("d1").value; //variables to hold checks
-    var d2 = document.getElementById("d2").value;
-    var d3 = document.getElementById("d3").value;
-    var d4 = document.getElementById("d4").value;
-    var n1 = document.getElementById("n1").value; 
-    var n2 = document.getElementById("n2").value;
-    var n3 = document.getElementById("n3").value;
-    var n4 = document.getElementById("n4").value;
+    var d1 = d1box.value; //variables to hold checks
+    var d2 = d2box.value;
+    var d3 = d3box.value;
+    var d4 = d4box.value;
+    var n1 = n1box.value; 
+    var n2 = n2box.value;
+    var n3 = n3box.value;
+    var n4 = n4box.value;
     full = validateform(d1); //validate d1 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the denominators.");
@@ -104,7 +112,32 @@ function checkweights() {
     return true;
 }
 
-var calcmean = document.getElementById("meanb");
+function updatePercent(n, d) {
+    var result;
+    var full = true;
+    if (n == null || n == "" || d == null || d == "") {
+        full = false;
+    }
+    if (full == false) {
+        result = "";
+    }
+
+    else if (d.value <= 0 || n.value < 0 || isNaN(Number(n.value)) || isNaN(Number(d.value))) {
+        result = "N/A"
+    }
+    else {
+        result = n.value / d.value;
+        result = Math.round(result * 100) / 100;
+    }
+
+    console.log(result);
+    return result;
+}
+
+/////////////////////////////////////////////////
+
+//CALCULATE MEAN AND WEIGHTED MEAN
+
 calcmean.onclick = function () {
 
  ////////////////////////////////////////////////////
@@ -134,8 +167,6 @@ calcmean.onclick = function () {
         return;
     }
 
-    var totden = d1 + d2 + d3 + d4;
-    console.log(totden);
     var n1 = Number(document.querySelector("input[name='num1']").value); //get all numerator values for calculations
     var n2 = Number(document.querySelector("input[name='num2']").value);
     var n3 = Number(document.querySelector("input[name='num3']").value);
@@ -146,15 +177,21 @@ calcmean.onclick = function () {
         window.alert("Please input numbers only!");
         return;
     }
+    if (n1 < 0 || n2 < 0 || n3 < 0 || n4 < 0) {
+        window.alert("Numberators must be greater than or equal to 0!");
+        return;
+    }
 
-    var totnum = n1 + n2 + n3 + n4;
-    console.log(totnum);
-    result = totnum / totden;
+    a1tot = n1 / d1;
+    a2tot = n2 / d2;
+    a3tot = n3 / d3;
+    a4tot = n4 / d4;
+    result = (a1tot + a2tot + a3tot + a4tot) / 4;
+    result = Math.round(result * 100) / 100;
     console.log("result= " + result);
     document.getElementById("res").value = "The Mean of your Assignments is: " + result; //place result into result location
 }
 
-var calcweightmean = document.getElementById("wb");
 calcweightmean.onclick = function () {
 
     var full = checkgrades();
@@ -194,6 +231,10 @@ calcweightmean.onclick = function () {
         window.alert("Please input numbers only!");
         return;
     }
+    if (n1 < 0 || n2 < 0 || n3 < 0 || n4 < 0) {
+        window.alert("Numberators must be greater than or equal to 0!");
+        return;
+    }
 
     var w1 = Number(document.querySelector("input[name='w1']").value);
     var w2 = Number(document.querySelector("input[name='w2']").value);
@@ -217,5 +258,50 @@ calcweightmean.onclick = function () {
     result = a1tot + a2tot + a3tot + a4tot;
     console.log("atots= " + result);
     result = result / (w1 + w2 + w3 + w4);
+    result = Math.round(result * 100) / 100;
     document.getElementById("res").value = "The Weighted Mean of your Assignments is: " + result;
+}
+
+/////////////////////////////////////////////////
+
+//UPDATE PERCENT AS GRADES TYPED IN!
+
+n1box.onkeyup = function () {
+    var result = updatePercent(n1box, d1box);
+    document.getElementById("a1per").value = result;
+}
+
+d1box.onkeyup = function () {
+    var result = updatePercent(n1box, d1box);
+    document.getElementById("a1per").value = result;
+}
+
+n2box.onkeyup = function () {
+    var result = updatePercent(n2box, d2box);
+    document.getElementById("a2per").value = result;
+}
+
+d2box.onkeyup = function () {
+    var result = updatePercent(n2box, d2box);
+    document.getElementById("a2per").value = result;
+}
+
+n3box.onkeyup = function () {
+    var result = updatePercent(n3box, d3box)
+    document.getElementById("a3per").value = result;
+}
+
+d3box.onkeyup = function () {
+    var result = updatePercent(n3box, d3box);
+    document.getElementById("a3per").value = result;
+}
+
+n4box.onkeyup = function () {
+    var result = updatePercent(n4box, d4box);
+    document.getElementById("a4per").value = result;
+}
+
+d4box.onkeyup = function () {
+    var result = updatePercent(n4box, d4box);
+    document.getElementById("a4per").value = result;
 }
