@@ -3,14 +3,19 @@ h1, p {
     background-color: white;
 }
 
+h1{
+    font-family: 'Yu Gothic';
+    margin-left: 25px;
+}
+
 body {
     background-color: #A3062A;
 }
 
 h2 {
     color: #A3062A;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 19px;
+    font-weight: 900;
 }
 
 div {
@@ -32,16 +37,23 @@ div2 {
     background-color: #EBF3F2;
     width: 800px; /* 55% */
     height: 520px; /* 62% */
+    margin-left: 25px;
 }
 
 tr:first-child {
     background-color: #DCDCDC;
+    font-size: 14px;
+    /*font-weight: bold;*/
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 }
 
 table, td, th {
-    border: 1px solid #ddd;
+    border: 1px solid #C8C8C8;
     text-align: left;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    
 }
+
 
 table {
     table-layout: fixed;
@@ -60,15 +72,17 @@ td{
 
 p {
     background-color: #EBF3F2;
+    font-size: 15px;
 }
 
-table, td, th, div2, h2, p, h1 {
-    margin-left: 25px;
+table, td, th, h2, p{
+    margin-left: 15px;
 }
 
 input {
     width: 55%; /*30%*/
     padding-left: 1px;
+    padding-bottom: 5px;
 }
 
 meanbutton {
@@ -85,6 +99,7 @@ wbutton {
 
 button {
     background-color: #A3062A;
+    border-radius: 3px;
     border: none;
     color: white;
     width: 90px;
@@ -97,7 +112,7 @@ html {
 
 resform {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 22px;
     color: black;
     font-size: 18px;
@@ -106,4 +121,8 @@ resform {
     display: block; /* makes it have a width */
     content: ""; /* clears default height */
     margin-top: 5px; /* change this to whatever height you want it */
+}
+.insidetbl{
+    font-size:15px;
+    font-weight: 500;
 }
