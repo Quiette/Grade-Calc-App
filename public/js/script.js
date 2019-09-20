@@ -12,6 +12,13 @@ var n4box = document.getElementById("n4");
 var calcmean = document.getElementById("meanb");
 var calcweightmean = document.getElementById("wb");
 
+document.onkeydown = function(e){ 
+    if (e.keyCode === 13) { 
+        e.preventDefault();
+        return false;
+    }
+}   //PREVENTS REFRESH WHEN CLICK ENTER
+
 /////////////////////////////////////////////////
 
 //SUB-ROUTINES
