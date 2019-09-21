@@ -11,6 +11,7 @@ var n3box = document.getElementById("n3");
 var n4box = document.getElementById("n4");
 var calcmean = document.getElementById("meanb");
 var calcweightmean = document.getElementById("wb");
+var clr = document.getElementById("clrb");
 
 document.onkeydown = function(e){ 
     if (e.keyCode === 13) { 
@@ -311,4 +312,26 @@ n4box.onkeyup = function () {
 d4box.onkeyup = function () {
     var result = updatePercent(n4box, d4box);
     document.getElementById("a4per").value = result;
+}
+
+/////////////////////////////////////////////////
+
+clr.onclick = function () {
+    d1box.value = "";
+    d2box.value = "";
+    d3box.value = "";
+    d4box.value = "";
+    n1box.value = "";
+    n2box.value = "";
+    n3box.value = "";
+    n4box.value = "";
+    document.getElementById("a1per").value = "";
+    document.getElementById("a2per").value = "";
+    document.getElementById("a3per").value = "";
+    document.getElementById("a4per").value = "";
+    document.getElementById("res").value = "";
+    document.getElementById("w1").value = "";
+    document.getElementById("w2").value = "";
+    document.getElementById("w3").value = "";
+    document.getElementById("w4").value = "";
 }

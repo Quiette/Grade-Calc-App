@@ -97,6 +97,12 @@ wbutton {
     bottom: 15px;
 }
 
+clrbutton {
+    position: absolute;
+    right: 230px;
+    bottom: 15px;
+}
+
 button {
     background-color: #A3062A;
     border-radius: 3px;
