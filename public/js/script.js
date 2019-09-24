@@ -12,6 +12,7 @@ var n4box = document.getElementById("n4");
 var calcmean = document.getElementById("meanb");
 var calcweightmean = document.getElementById("wb");
 var clr = document.getElementById("clrb");
+var format = document.getElementById("chngb");
 
 document.onkeydown = function(e){ 
     if (e.keyCode === 13) { 
@@ -20,9 +21,11 @@ document.onkeydown = function(e){
     }
 }   //PREVENTS REFRESH WHEN CLICK ENTER
 
+var percentage = false;
+
 /////////////////////////////////////////////////
 
-//SUB-ROUTINES
+ //SUB-ROUTINES
 
 function validateform(x) {
     if (x == null || x == "") {
@@ -195,9 +198,14 @@ calcmean.onclick = function () {
     a3tot = n3 / d3;
     a4tot = n4 / d4;
     result = (a1tot + a2tot + a3tot + a4tot) / 4;
-    result = Math.round(result * 100) / 100;
+    result = Math.round(result * 100);
     console.log("result= " + result);
-    document.getElementById("res").value = "The Mean of your Assignments is: " + result; //place result into result location
+    if (percentage == false) {
+        document.getElementById("res").value = "The Mean of your Assignments is: " + result + "/100"; //place result into result location
+    }
+    else {
+        document.getElementById("res").value = "The Mean of your Assignments is: " + result + "%";
+    }
 }
 
 calcweightmean.onclick = function () {
@@ -266,52 +274,137 @@ calcweightmean.onclick = function () {
     result = a1tot + a2tot + a3tot + a4tot;
     console.log("atots= " + result);
     result = result / (w1 + w2 + w3 + w4);
-    result = Math.round(result * 100) / 100;
-    document.getElementById("res").value = "The Weighted Mean of your Assignments is: " + result;
+    result = Math.round(result * 100);
+    if (percentage == false) {
+        document.getElementById("res").value = "The Weighted Mean of your Assignments is: " + result + "/100";
+    }
+    else{
+        document.getElementById("res").value = "The Weighted Mean of your Assignments is: " + result + "%";
+    }
 }
 
 /////////////////////////////////////////////////
 
 //UPDATE PERCENT AS GRADES TYPED IN!
 
-n1box.onkeyup = function () {
+n1box.onkeydown = function () {
     var result = updatePercent(n1box, d1box);
-    document.getElementById("a1per").value = result;
+    if (result == "" || result== "N/A") {
+        document.getElementById("a1per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a1per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a1per").value = result + "%";
+    }
 }
 
 d1box.onkeyup = function () {
     var result = updatePercent(n1box, d1box);
-    document.getElementById("a1per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a1per").value = result;
+        return;
+    }
+    result = result * 100;
+    if(percentage == false) {
+        document.getElementById("a1per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a1per").value = result + "%";
+    }
 }
 
 n2box.onkeyup = function () {
     var result = updatePercent(n2box, d2box);
-    document.getElementById("a2per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a2per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a2per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a2per").value = result + "%";
+    }
 }
 
 d2box.onkeyup = function () {
     var result = updatePercent(n2box, d2box);
-    document.getElementById("a2per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a2per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a2per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a2per").value = result + "%";
+    }
 }
 
 n3box.onkeyup = function () {
     var result = updatePercent(n3box, d3box)
-    document.getElementById("a3per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a3per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a3per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a3per").value = result + "%";
+    }
 }
 
 d3box.onkeyup = function () {
     var result = updatePercent(n3box, d3box);
-    document.getElementById("a3per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a3per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a3per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a3per").value = result + "%";
+    }
 }
 
 n4box.onkeyup = function () {
     var result = updatePercent(n4box, d4box);
-    document.getElementById("a4per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a4per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a4per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a4per").value = result + "%";
+    }
 }
 
 d4box.onkeyup = function () {
     var result = updatePercent(n4box, d4box);
-    document.getElementById("a4per").value = result;
+    if (result == "" || result == "N/A") {
+        document.getElementById("a4per").value = result;
+        return;
+    }
+    result = result * 100;
+    if (percentage == false) {
+        document.getElementById("a4per").value = result + "/100";
+    }
+    else {
+        document.getElementById("a4per").value = result + "%";
+    }
 }
 
 /////////////////////////////////////////////////
@@ -334,4 +427,17 @@ clr.onclick = function () {
     document.getElementById("w2").value = "";
     document.getElementById("w3").value = "";
     document.getElementById("w4").value = "";
+}
+
+format.onclick = function () {
+    if (percentage == false){
+        percentage = true;
+        format.innerText = "CHANGE TO FRACTION (CLEARS INPUT)";
+        clr.click();
+    }
+    else{
+        percentage = false;
+        format.innerText = "CHANGE TO PERCENTAGE (CLEARS INPUT)";
+        clr.click();
+    }
 }
