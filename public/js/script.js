@@ -31,6 +31,7 @@ function validateform(x) {
     if (x == null || x == "") {
         return false;
     }
+    return true;
 }
 
 function checkgrades() {
@@ -429,15 +430,97 @@ clr.onclick = function () {
     document.getElementById("w4").value = "";
 }
 
+function changePercentFormat() {
+    var filled = validateform(d4);
+    if (filled == true) {
+        filled = validateform(n4);
+    }
+    if (filled == true) {
+        var result = updatePercent(n4box, d4box);
+        if (result == "" || result == "N/A") {
+            document.getElementById("a4per").value = result;
+        }
+        else {
+            result = result * 100;
+            if (percentage == false) {
+                document.getElementById("a4per").value = result + "/100";
+            }
+            else {
+                document.getElementById("a4per").value = result + "%";
+            }
+        }
+    }
+
+    var filled = validateform(d3);
+    if (filled == true) {
+        filled = validateform(n3);
+    }
+    if (filled == true) {
+        result = updatePercent(n3box, d3box);
+        if (result == "" || result == "N/A") {
+            document.getElementById("a3per").value = result;
+        }
+        else {
+            result = result * 100;
+            if (percentage == false) {
+                document.getElementById("a3per").value = result + "/100";
+            }
+            else {
+                document.getElementById("a3per").value = result + "%";
+            }
+        }
+    }
+
+    var filled = validateform(d2);
+    if (filled == true) {
+        filled = validateform(n2);
+    }
+    if (filled == true) {
+        result = updatePercent(n2box, d2box);
+        if (result == "" || result == "N/A") {
+            document.getElementById("a2per").value = result;
+        }
+        else {
+            result = result * 100;
+            if (percentage == false) {
+                document.getElementById("a2per").value = result + "/100";
+            }
+            else {
+                document.getElementById("a2per").value = result + "%";
+            }
+        }
+    }
+
+    var filled = validateform(d1);
+    if (filled == true) {
+        filled = validateform(n1);
+    }
+    if (filled == true) {
+        result = updatePercent(n1box, d1box);
+        if (result == "" || result == "N/A") {
+            document.getElementById("a1per").value = result;
+        }
+        else {
+            result = result * 100;
+            if (percentage == false) {
+                document.getElementById("a1per").value = result + "/100";
+            }
+            else {
+                document.getElementById("a1per").value = result + "%";
+            }
+        }
+    }
+}
+
 format.onclick = function () {
     if (percentage == false){
         percentage = true;
-        format.innerText = "CHANGE TO FRACTION (CLEARS INPUT)";
-        clr.click();
+        format.innerText = "CHANGE TO FRACTION";
+        changePercentFormat();
     }
     else{
         percentage = false;
-        format.innerText = "CHANGE TO PERCENTAGE (CLEARS INPUT)";
-        clr.click();
+        format.innerText = "CHANGE TO PERCENTAGE";
+        changePercentFormat();
     }
 }
