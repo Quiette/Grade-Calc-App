@@ -13,6 +13,9 @@ var calcmean = document.getElementById("meanb");
 var calcweightmean = document.getElementById("wb");
 var clr = document.getElementById("clrb");
 var format = document.getElementById("chngb");
+var meancalced = false;
+var weighcalced = false;
+
 
 document.onkeydown = function(e){ 
     if (e.keyCode === 13) { 
@@ -47,25 +50,25 @@ function checkgrades() {
     full = validateform(d1); //validate d1 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the denominators.");
-        console.log("d1= " + d1);
+        
         return false;
     }
     full = validateform(d2); //validate d2 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the denominators.");
-        console.log("d2");
+        
         return false;
     }
     full = validateform(d3); //validate d3 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the denominators.");
-        console.log("d3");
+        
         return false;
     }
     full = validateform(d4); //validate d4 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the denominators.");
-        console.log("d4");
+        
         return false;
     }
     full = validateform(n1); //validate n1 and if not filled, stop
@@ -106,19 +109,16 @@ function checkweights() {
     full = validateform(w2); //validate d2 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the weights.");
-        console.log("w2");
         return false;
     }
     full = validateform(w3); //validate d3 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the weights.");
-        console.log("w3");
         return false;
     }
     full = validateform(w4); //validate d4 and if not filled, stop
     if (full == false) {
         window.alert("Please fill in the weights.");
-        console.log("w4");
         return false;
     }
     return true;
@@ -142,7 +142,6 @@ function updatePercent(n, d) {
         result = Math.round(result * 100) / 100;
     }
 
-    console.log(result);
     return result;
 }
 
@@ -172,7 +171,6 @@ calcmean.onclick = function () {
         return;
     }
 
-    console.log("found d1,2,3,4");
 
     if (d1 <= 0 || d2 <= 0 || d3 <= 0 || d4 <= 0) { //if denominator <=0 math error
         window.alert("Denominators must be greater than 0!");
@@ -183,7 +181,6 @@ calcmean.onclick = function () {
     var n2 = Number(document.querySelector("input[name='num2']").value);
     var n3 = Number(document.querySelector("input[name='num3']").value);
     var n4 = Number(document.querySelector("input[name='num4']").value);
-    console.log("found n1,2,3,4");
 
     if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) { //if one of the 4 isnt a number error
         window.alert("Please input numbers only!");
@@ -200,13 +197,15 @@ calcmean.onclick = function () {
     a4tot = n4 / d4;
     result = (a1tot + a2tot + a3tot + a4tot) / 4;
     result = Math.round(result * 100);
-    console.log("result= " + result);
+   
     if (percentage == false) {
         document.getElementById("res").value = "The Mean of your Assignments is: " + result + "/100"; //place result into result location
     }
     else {
         document.getElementById("res").value = "The Mean of your Assignments is: " + result + "%";
     }
+    weighcalced = false;
+    meancalced = true;
 }
 
 calcweightmean.onclick = function () {
@@ -231,7 +230,6 @@ calcweightmean.onclick = function () {
         return;
     }
 
-    console.log("found d1,2,3,4");
 
     if (d1 <= 0 || d2 <= 0 || d3 <= 0 || d4 <= 0) {
         window.alert("Denominators must be greater than 0!");
@@ -242,7 +240,6 @@ calcweightmean.onclick = function () {
     var n2 = Number(document.querySelector("input[name='num2']").value);
     var n3 = Number(document.querySelector("input[name='num3']").value);
     var n4 = Number(document.querySelector("input[name='num4']").value);
-    console.log("found n1,2,3,4");
 
     if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) {
         window.alert("Please input numbers only!");
@@ -267,21 +264,23 @@ calcweightmean.onclick = function () {
         window.alert("Weights must be greater than or equal to 0!");
         return;
     }
-    console.log("w1, w2, w3, w4= " + w1 + "," + w2 + "," + w3 + "," + w4);
+    
     var a1tot = (n1 / d1) * w1;
     var a2tot = (n2 / d2) * w2;
     var a3tot = (n3 / d3) * w3;
     var a4tot = (n4 / d4) * w4;
     result = a1tot + a2tot + a3tot + a4tot;
-    console.log("atots= " + result);
     result = result / (w1 + w2 + w3 + w4);
     result = Math.round(result * 100);
+ 
     if (percentage == false) {
         document.getElementById("res").value = "The Weighted Mean of your Assignments is: " + result + "/100";
     }
     else{
         document.getElementById("res").value = "The Weighted Mean of your Assignments is: " + result + "%";
     }
+    weighcalced = true;
+    meancalced = false;
 }
 
 /////////////////////////////////////////////////
@@ -294,7 +293,7 @@ n1box.onkeydown = function () {
         document.getElementById("a1per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a1per").value = result + "/100";
     }
@@ -309,7 +308,7 @@ d1box.onkeyup = function () {
         document.getElementById("a1per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if(percentage == false) {
         document.getElementById("a1per").value = result + "/100";
     }
@@ -324,7 +323,7 @@ n2box.onkeyup = function () {
         document.getElementById("a2per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a2per").value = result + "/100";
     }
@@ -339,7 +338,7 @@ d2box.onkeyup = function () {
         document.getElementById("a2per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a2per").value = result + "/100";
     }
@@ -354,7 +353,7 @@ n3box.onkeyup = function () {
         document.getElementById("a3per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a3per").value = result + "/100";
     }
@@ -369,7 +368,7 @@ d3box.onkeyup = function () {
         document.getElementById("a3per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a3per").value = result + "/100";
     }
@@ -384,7 +383,7 @@ n4box.onkeyup = function () {
         document.getElementById("a4per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a4per").value = result + "/100";
     }
@@ -399,7 +398,7 @@ d4box.onkeyup = function () {
         document.getElementById("a4per").value = result;
         return;
     }
-    result = result * 100;
+    result = Math.round(result * 100);
     if (percentage == false) {
         document.getElementById("a4per").value = result + "/100";
     }
@@ -441,7 +440,7 @@ function changePercentFormat() {
             document.getElementById("a4per").value = result;
         }
         else {
-            result = result * 100;
+            result = Math.round(result * 100);
             if (percentage == false) {
                 document.getElementById("a4per").value = result + "/100";
             }
@@ -461,7 +460,7 @@ function changePercentFormat() {
             document.getElementById("a3per").value = result;
         }
         else {
-            result = result * 100;
+            result = Math.round(result * 100);
             if (percentage == false) {
                 document.getElementById("a3per").value = result + "/100";
             }
@@ -481,7 +480,7 @@ function changePercentFormat() {
             document.getElementById("a2per").value = result;
         }
         else {
-            result = result * 100;
+            result = Math.round(result * 100);
             if (percentage == false) {
                 document.getElementById("a2per").value = result + "/100";
             }
@@ -501,7 +500,7 @@ function changePercentFormat() {
             document.getElementById("a1per").value = result;
         }
         else {
-            result = result * 100;
+            result = Math.round(result * 100);
             if (percentage == false) {
                 document.getElementById("a1per").value = result + "/100";
             }
@@ -522,5 +521,12 @@ format.onclick = function () {
         percentage = false;
         format.innerText = "CHANGE TO PERCENTAGE";
         changePercentFormat();
+    }
+
+    if (meancalced == true) {
+        calcmean.click();
+    }
+    if (weighcalced == true) {
+        calcweightmean.click();
     }
 }
